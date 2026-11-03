@@ -1,10 +1,14 @@
+
 package com.udistrital.appsm.ui.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Download
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.Speed
+import androidx.compose.material.icons.filled.Tune
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -22,21 +26,62 @@ fun DashboardScreen() {
         topBar = {
             TopAppBar(
                 title = { Text("Monitoring System") },
-                actions = {
+                navigationIcon = {
                     IconButton(onClick = { /* TODO */ }) {
-                        Icon(imageVector = Icons.Default.Settings, contentDescription = "Settings")
+                        Icon(
+                            imageVector = Icons.Default.Menu,
+                            contentDescription = "Menu"
+                        )
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primary, // Cambia el color del fondo de la barra
                     titleContentColor = MaterialTheme.colorScheme.onPrimary, // Cambia el color del texto del título
-                    actionIconContentColor = MaterialTheme.colorScheme.onPrimary // Cambia el color de los íconos de acción
+                    navigationIconContentColor = MaterialTheme.colorScheme.onPrimary // Cambia el color del ícono de navegación
                 )
             )
         },
         floatingActionButton = {
             FloatingActionButton(onClick = { /* TODO */ }) {
                 Icon(imageVector = Icons.Default.Download, contentDescription = "Download Report")
+            }
+        },
+        bottomBar = {
+            NavigationBar(
+                containerColor = MaterialTheme.colorScheme.primary,
+                contentColor = MaterialTheme.colorScheme.onPrimary
+            ) {
+                NavigationBarItem(
+                    selected = true,
+                    onClick = { /* TODO */ },
+                    icon = { Icon(Icons.Default.Speed, contentDescription = "Dashboard") },
+                    label = { Text("Dashboard") },
+                    colors = NavigationBarItemDefaults.colors(
+                        selectedIconColor = MaterialTheme.colorScheme.primary,
+                        selectedTextColor = MaterialTheme.colorScheme.onPrimary,
+                        indicatorColor = MaterialTheme.colorScheme.onPrimary
+                    )
+                )
+                NavigationBarItem(
+                    selected = false,
+                    onClick = { /* TODO */ },
+                    icon = { Icon(Icons.Default.Tune, contentDescription = "Controls") },
+                    label = { Text("Controls") },
+                    colors = NavigationBarItemDefaults.colors(
+                        unselectedIconColor = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.7f),
+                        unselectedTextColor = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.7f)
+                    )
+                )
+                NavigationBarItem(
+                    selected = false,
+                    onClick = { /* TODO */ },
+                    icon = { Icon(Icons.Default.Settings, contentDescription = "Settings") },
+                    label = { Text("Settings") },
+                    colors = NavigationBarItemDefaults.colors(
+                        unselectedIconColor = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.7f),
+                        unselectedTextColor = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.7f)
+                    )
+                )
             }
         }
     ) { paddingValues ->
